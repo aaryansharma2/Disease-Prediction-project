@@ -1,0 +1,417 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+
+    <script src="{% static 'jquery.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+
+    <title>predic0</title>
+
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage/css.css' %}">
+
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --secondary: #10B981;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.7) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            color: var(--text-main);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            color: var(--text-main);
+        }
+
+        .card-body {
+            color: var(--text-main);
+        }
+
+        /* Buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Modals */
+        .modal-content {
+            background: var(--dark-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            color: var(--text-main);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .img-hover {
+            transition: transform 0.3s ease;
+            border-radius: 12px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .img-hover:hover {
+            transform: scale(1.05);
+        }
+
+        .jumbotron {
+            background: var(--card-bg) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            color: var(--text-main);
+            padding: 4rem 2rem;
+        }
+
+        .jumbotron h1 {
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #footer {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border-top: 1px solid var(--glass-border);
+            border-radius: 24px 24px 0 0;
+            margin-top: 4rem;
+            padding: 2rem;
+        }
+
+        .modal-backdrop.show {
+            opacity: 0.8;
+        }
+
+        a {
+            color: #60a5fa;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+    </style>
+
+
+
+
+    {% block head %}
+
+
+
+    {% endblock %}
+
+
+
+</head>
+
+
+<body>
+
+
+
+    <div class="container-fluid p-0">
+
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <a class="navbar-brand" href="{% url 'home' %}">Predic0 </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Contact</a>
+                    </li>
+
+
+
+                    {% if user.is_authenticated %}
+
+                    {% if user.patient %}
+
+                    <li class="nav-item ml-2">
+                    <li class="nav-link" href="{% url 'patient_ui' %}" style="color: rgb(91, 252, 50);">Hello,
+                        {{user.patient.name}}</li>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{% url 'patient_ui' %}">Profile</a>
+                    </li>
+
+                    {% endif %}
+
+                    {% if user.doctor %}
+
+                    <li class="nav-item ml-2">
+                    <li class="nav-link" href="{% url 'doctor_ui' %}" style="color: rgb(91, 252, 50);">Hello, Dr.
+                        {{user.doctor.name}}</li>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{% url 'doctor_ui' %}">Profile</a>
+                    </li>
+
+
+                    {% endif %}
+
+                    {% if user.is_superuser %}
+
+                    <li class="nav-item ml-2">
+                    <li class="nav-link" href="{% url 'admin_ui' %}" style="color: rgb(91, 252, 50);">Admin:
+                        {{user.username}}</li>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{% url 'admin_ui' %}">Profile</a>
+                    </li>
+
+
+                    {% endif %}
+
+                    <li class="nav-item ml-2">
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#logout-modal"
+                            style="color: rgb(247, 190, 188);">Log out</button>
+
+                    </li>
+
+
+
+
+                    <!-- Small modal -->
+
+                    <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4>Logout <i class="fa fa-lock"></i></h4>
+                                </div>
+                                <div class="modal-body"><i class="fa fa-question-circle"></i><span
+                                        style="color: rgb(42, 187, 6);">{{user.patient.name}}</span>, Are you sure you
+                                    want to log-off?</div>
+                                <div class="modal-footer"><a href="{% url 'logout' %}"
+                                        class="btn btn-primary btn-block">Logout</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% else %}
+
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg2">Signup</a>
+                    </li>
+                    <li class="nav-item ml-">
+                        <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg">Signin</a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+
+
+
+
+        <!-- Large modal -->
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+
+                    <center>
+                        <h2 class="mb-4">Sign-In As</h2>
+                    </center>
+
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-4 mb-4">
+                                <a href="{% url 'sign_in_admin' %}" class="text-decoration-none">
+                                    <div class="glass-card p-4">
+                                        <img alt="admin" src="{% static 'homepage/admin.png' %}"
+                                            class="img-fluid img-hover mb-3">
+                                        <h4 class="mt-2 text-white">Admin</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <a href="{% url 'sign_in_doctor' %}" class="text-decoration-none">
+                                    <div class="glass-card p-4">
+                                        <img alt="doctor" src="{% static 'homepage/doctor.png' %}"
+                                            class="img-fluid img-hover mb-3">
+                                        <h4 class="mt-2 text-white">Doctor</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <a href="{% url 'sign_in_patient' %}" class="text-decoration-none">
+                                    <div class="glass-card p-4">
+                                        <img alt="patient" src="{% static 'homepage/patient.png' %}"
+                                            class="img-fluid img-hover mb-3">
+                                        <h4 class="mt-2 text-white">Patient</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        {% block body %}
+
+        {% endblock %}
+
+
+
+
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
