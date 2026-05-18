@@ -1,0 +1,157 @@
+{% extends "basic.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="jumbotron shadow-lg">
+        <h1 class="display-4 font-weight-bold">Be your own doctor...</h1>
+        <p class="lead mt-4">
+            The Disease Prediction system is an advanced AI-driven platform designed to provide instant medical
+            guidance.
+            By analyzing your symptoms using intelligent data mining techniques, we offer accurate insights into
+            potential illnesses,
+            empowering you to take the next steps in your healthcare journey with confidence.
+        </p>
+        <hr class="my-4 border-light opacity-25">
+        <p>Our platform bridges the gap between symptom onset and professional consultation.</p>
+
+        {% if not user.is_authenticated %}
+        <p class="lead mt-4">
+            <button type="button" class="btn-premium px-5" data-toggle="modal" data-target=".bd-example-modal-lg">Get
+                Started</button>
+        </p>
+        {% endif %}
+    </div>
+
+    {% if not user.is_authenticated %}
+    <div class="my-5 py-5 text-center">
+        <h2 class="mb-5 display-5 font-weight-bold">Sign-In To Your Portal</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'sign_in_admin' %}" class="text-decoration-none">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                        <img alt="admin" src="{% static 'homepage/admin.png' %}" class="img-hover mb-3">
+                        <h4 class="text-white">Administrator</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'sign_in_doctor' %}" class="text-decoration-none">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                        <img alt="doctor" src="{% static 'homepage/doctor.png' %}" class="img-hover mb-3">
+                        <h4 class="text-white">Medical Specialist</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'sign_in_patient' %}" class="text-decoration-none">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+                        <img alt="patient" src="{% static 'homepage/patient.png' %}" class="img-hover mb-3">
+                        <h4 class="text-white">Patient Portal</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Signup Modal -->
+    <div class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-4">
+                <h2 class="text-center mb-4 font-weight-bold">Create New Account</h2>
+                <div class="row text-center">
+                    <div class="col-md-6 mb-4">
+                        <a href="{% url 'signup_doctor' %}" class="text-decoration-none">
+                            <div class="glass-card p-4 h-100">
+                                <img alt="doctor" src="{% static 'homepage/doctor.png' %}" class="img-hover mb-3">
+                                <h4 class="text-white">Join as Doctor</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <a href="{% url 'signup_patient' %}" class="text-decoration-none">
+                            <div class="glass-card p-4 h-100">
+                                <img alt="patient" src="{% static 'homepage/patient.png' %}" class="img-hover mb-3">
+                                <h4 class="text-white">Join as Patient</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-5 py-5">
+        <h2 class="text-center mb-5 font-weight-bold">Expert Consultations</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="glass-card h-100 overflow-hidden">
+                    <img alt="Dr. Manish" src="{% static 'homepage/c31.jpg' %}" class="w-100"
+                        style="height: 250px; object-fit: cover;">
+                    <div class="p-4 text-center">
+                        <h4 class="text-primary-gradient">Dr. Manish Bansal</h4>
+                        <p class="text-muted small mb-0">H.No-1283, Ward No-14, New Anaz Mandi Road, P.O-Radaur, Distt.
+                            Yamuna Nagar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="glass-card h-100 overflow-hidden">
+                    <img alt="Dr. Paul" src="{% static 'homepage/c41.jpg' %}" class="w-100"
+                        style="height: 250px; object-fit: cover;">
+                    <div class="p-4 text-center">
+                        <h4 class="text-primary-gradient">Dr. Paul Jatinder</h4>
+                        <p class="text-muted small mb-0">Om Niwas Khai Basti, Khai Road, Lehragaga-148031, Distt.
+                            Sangrur, Punjab</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="glass-card h-100 overflow-hidden">
+                    <img alt="Dr. Radhika" src="{% static 'homepage/s72.jpg' %}" class="w-100"
+                        style="height: 250px; object-fit: cover;">
+                    <div class="p-4 text-center">
+                        <h4 class="text-primary-gradient">Dr. Radhika Swaroop</h4>
+                        <p class="text-muted small mb-0">Swaroop Hospital, 1, Hawa Sarak, Civil Lines, # Jaipur-302 019
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="glass-card mt-5 p-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h3 class="navbar-brand p-0 mb-3">Predic0</h3>
+                <p class="text-muted">Leading the way in digital healthcare diagnostics and AI-powered consultations.
+                </p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">Contact Information</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><i class="fa fa-envelope mr-2"></i> <a href="mailto:aaryansharma1098@gmail.com"
+                            class="text-muted">aaryansharma1098@gmail.com</a></li>
+                    <li class="mb-2"><i class="fa fa-phone mr-2"></i> +91 7814013382</li>
+                    <li><i class="fa fa-map-marker mr-2"></i> Address: sector 44-b, Chandigarh</li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">Legal</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><a href="#" class="text-muted">Privacy Policy</a></li>
+                    <li><a href="#" class="text-muted">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-top border-light pt-4 mt-4 text-center">
+            <p class="text-muted mb-0">© 2026 Predic0 Health. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+{% endblock %}
